@@ -1,0 +1,25 @@
+version: "3.5"
+
+services:
+  clot-ecommerce-api:
+    container_name: clot-ecommerce-api
+    ports:
+      - "3000:3000"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - clot-ecommerce-api-db
+    environment:
+      - PORT=3000
+
+  clot-ecommerce-api-db:
+    image: postgres
+    container_name: clot-ecommerce-api-db
+    environment:
+      - POSTGRES_PASSWORD=dbpwd
+    volumes:
+      - clot-ecommerce-api-db:/var/lib/postgresql/data
+
+volumes:
+  clot-ecommerce-api-db:
