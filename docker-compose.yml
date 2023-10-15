@@ -12,12 +12,23 @@ services:
       - clot-ecommerce-api-db
     environment:
       - PORT=3000
+      - DB_HOST=clot-ecommerce-api-db
+      - DB_NAME=clot
+      - DB_USER=admin
+      - DB_PASSWORD=admin
+      - DB_PORT=5432
+    volumes:
+      - .:/app
 
   clot-ecommerce-api-db:
     image: postgres
     container_name: clot-ecommerce-api-db
+    ports:
+      - "5432:5432"
     environment:
-      - POSTGRES_PASSWORD=dbpwd
+      - POSTGRES_DB=clot
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
     volumes:
       - clot-ecommerce-api-db:/var/lib/postgresql/data
 
