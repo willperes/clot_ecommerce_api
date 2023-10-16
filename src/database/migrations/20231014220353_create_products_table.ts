@@ -14,6 +14,7 @@ export async function up(knex: Knex): Promise<void> {
         table.increments("id").primary()
         table.string("title").notNullable()
         table.string("subtitle").notNullable()
+        table.integer("type").notNullable()
         table.integer("category_id").unsigned().notNullable()
         table.foreign("category_id").references("id").inTable("category")
         table.text("description").notNullable()

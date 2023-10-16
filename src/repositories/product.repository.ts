@@ -30,6 +30,7 @@ export class ProductRepository {
     private mapProductToProductModelData = (data: Omit<Product, "id">): Omit<ProductModelData, "id"> => ({
         category_id: data.categoryID,
         description: data.description,
+        type: data.type,
         images: JSON.stringify(data.images),
         subtitle: data.subtitle,
         title: data.title,
@@ -42,6 +43,7 @@ export class ProductRepository {
         id: model.id,
         categoryID: model.category_id,
         description: model.description,
+        type: model.type,
         images: JSON.parse(JSON.stringify(model.images)),
         subtitle: model.subtitle,
         title: model.title,

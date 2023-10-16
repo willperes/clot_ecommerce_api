@@ -1,4 +1,5 @@
-import { ArrayMinSize, IsArray, IsNumber, IsPositive, IsString, MinLength } from "class-validator";
+import { ArrayMinSize, IsArray, IsEnum, IsNumber, IsPositive, IsString, MinLength } from "class-validator";
+import { ProductType } from "src/interfaces/product.interface";
 
 export class CreateProductDTO {
     @MinLength(5)
@@ -8,6 +9,9 @@ export class CreateProductDTO {
     @MinLength(5)
     @IsString()
     public subtitle: string
+
+    @IsEnum(ProductType)
+    public type: ProductType
 
     @IsNumber()
     public categoryID: number

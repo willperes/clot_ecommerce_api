@@ -1,10 +1,12 @@
 import { Model } from "objection";
 import { CategoryModel } from "./category.model";
+import { ProductType } from "src/interfaces/product.interface";
 
 export interface ProductModelData {
     id: number
     title: string
     subtitle: string
+    type: ProductType
     category_id: number
     description: string
     images: string // string[] JSON
@@ -17,6 +19,7 @@ export class ProductModel extends Model {
     public id: number
     public title: string
     public subtitle: string
+    public type: ProductType
     public category_id: number
     public description: string
     public images: string
