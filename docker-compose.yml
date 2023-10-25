@@ -10,6 +10,8 @@ services:
       dockerfile: Dockerfile
     depends_on:
       - clot-ecommerce-api-db
+    restart: on-failure
+    command: bash -c "npm run migrate:latest && npm run start:dev"
     environment:
       - PORT=3000
       - DB_HOST=clot-ecommerce-api-db

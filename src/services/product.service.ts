@@ -18,8 +18,8 @@ export class ProductService {
       await new Promise((res) => setTimeout(() => res(true), 1000))
       const products = await this.findAll()
 
-      const topSellingProducts = this.findTopSelling(products)
-      const newInProducts = this.findNewIn(products)
+      const topSellingProducts = this.findTopSelling([...products])
+      const newInProducts = this.findNewIn([...products])
 
       // TODO: get from products with relationship
       const categories = await this.categoryService.getCategoriesFromProducts(products)

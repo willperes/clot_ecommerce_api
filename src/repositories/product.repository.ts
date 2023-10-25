@@ -5,7 +5,7 @@ export class ProductRepository {
     constructor() {}
 
     public findAll = async (): Promise<Product[]> => {
-        const result = await ProductModel.query().select("*")
+        const result = await ProductModel.query()
         return result.map(this.mapProductModelToProduct)
     }
     
